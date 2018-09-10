@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChaTime</title>
+    <style>
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .heading-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h2 {
+        margin: 10px 0;
+    }
+
+    h3 {
+        margin: 5px;
+    }
+
+    .chat-container {
+        width: 500px;
+        height: 80vh;
+        border: solid 1px black;
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .msg-container {
+        width: 100%;
+        height: 95%;
+        border: solid 0px white;
+    }
+
+    #msg-input {
+        display: flex;
+        justify-content: center;
+        height: 5%;
+        width: 100%;
+    }
+
+    #msg {
+        width: 80%;
+    }
+
+    #submit {
+        width: 20%;
+    }
+    </style>
+</head>
+<body>
+    <div class="heading-text">
+        <h2>Currenly Under Construction</h2>
+        <h3> Open 2 browers, turn on node server, and try it out</h3>
+    </div>
+    <div class="container">
+        <div class="chat-container">
+            <div class="msg-container"></div>
+            <form id="msg-input">
+                <input type="text" id="msg" size="30" placeholder="Type a message..">
+                <input type="submit" value="Submit" id="submit">
+            </form>
+        </div>
+    </div>
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        $(function(){
+            var socket = io.connect();
+
+            let $submitMsg = $('#msg-input');
+            let $msg = $('#msg');
+            let $msgContainer = $('.msg-container');
+
+            $submitMsg.submit(function(e){
+                e.preventDefault();
+                socket.emit('send msg', $msg.val());
+                console.log($msg.val());
+                $msg.val('');
+            });
+
+            socket.on('new msg', function(data){
+                $msgContainer.append(data.msg + '<br/>');
+                console.log("return value: " + data.msg);
+            });
+        });
+    </script>
+</body>
+</html>
