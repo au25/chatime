@@ -55,9 +55,7 @@
 </head>
 <body>
     <div class="heading-text">
-        <h2>Funcionable MVP - Under Continuous Development</h2>
-        <h3> Node server needs to be on</h3>
-        <h3> Type in localhost:3000 as the "domain"</h3>
+        <h2>Functionable MVP - Under Continuous Development</h2>
         <h3> Try it out in multiple browsers!</h3>
     </div>
     <div class="container">
@@ -92,6 +90,7 @@
 
             socket.on('new msg', function(data){
                 $msgContainer.append(data.msg + '<br/>');
+                console.log("what is data: " + data);
                 console.log("return value: " + data.msg);
             });
         });
