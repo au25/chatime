@@ -9,10 +9,9 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
-io.sockets.on('connection', function(socket) {
-    console.log("Socket is working!");
-    socket.on('send msg', function(data) {
-        console.log("Server: " + data);
-        io.sockets.emit('new msg', {msg: data});
+io.on('connection', function(socket) {
+  console.log("Socket is working!");
+  socket.on('send msg', function(data) {
+    io.emit('new msg', {name: data, msg: data});    
   });
 });

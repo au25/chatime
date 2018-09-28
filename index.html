@@ -92,14 +92,13 @@
 
             $submitMsg.submit(function(e){
                 e.preventDefault();
-                socket.emit('send msg', $msg.val());
-                console.log($msg.val());
+                socket.emit('send msg', [$username.val(), $msg.val()]);
                 $msg.val('');
             });
 
             socket.on('new msg', function(data){
-                $msgContainer.append($username.val() + ": " + data.msg + '<br/>');
-                console.log("what is data: " + data);
+                $msgContainer.append(data.msg[0] + ": " + data.msg[1] + '<br/>');
+                console.log(data);
                 console.log("return value: " + data.msg);
             });
         });
