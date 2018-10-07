@@ -99,6 +99,11 @@ const sendMessage = msg => {
     socket.emit('message', msg);
 }
 
+const removeFlexAddHide = className => {
+    className.classList.remove('flex');
+    className.classList.add('hidden');
+}
+
 //loginButton callback
 loginForm.addEventListener('submit', e => {
     //stops form refresh
@@ -120,10 +125,8 @@ loginForm.addEventListener('submit', e => {
         });
 
         //hide login form and show chat
-        loginContainer.classList.remove('flex');
-        loginContainer.classList.add('hidden');
-        loginForm.classList.remove('flex');
-        loginForm.classList.add('hidden');
+        removeFlexAddHide(loginContainer);
+        removeFlexAddHide(loginForm);
         chatContainer.classList.remove('hidden');
         chatContainer.classList.add('flex');  
     }

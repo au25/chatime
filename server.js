@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 })
 
 io.on('connect', socket => {
-    console.log("connected");
+    console.log("Socket connected!");
 
     socket.on('disconnect', () => {
         console.log("user disconnected");
@@ -26,5 +26,5 @@ io.on('connect', socket => {
 })
 
 http.listen(process.env.PORT || 3000, () => {
-    console.log('hiiiiii listening to port 3000');
+    console.log('hiiiiii are you listening to port 3000');
 });
