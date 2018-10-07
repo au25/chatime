@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chaTimev2</title>
+    <link rel="stylesheet" href="app.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+
+<body>
+    <div id="page-container">
+        <header>
+            <div class="header-info">
+                <h1> chaTime.v2</h1>
+            </div>
+        </header>
+
+        <div id="main-container">
+            <div id="login" class="flex">
+                <h2>Enter a name:</h2>
+                <form id="loginForm" class="flex">
+                    <input type="text" name="usrname" id="usernameInput" placeholder="Username" autofocus>
+                    <button id="login-button"> It's ChaTime!</button>
+                </form>
+            </div>
+
+            <div id="chat-container" class="hidden">
+                <div id="msg-container">
+                        
+                </div>
+
+                <form id="msg-form">
+                    <input type="text" name="msg" id="msgInput" placeholder="Enter a message">
+                    <button id="send-button">Send</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
